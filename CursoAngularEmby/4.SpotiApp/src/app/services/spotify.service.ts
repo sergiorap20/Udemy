@@ -17,7 +17,7 @@ export class SpotifyService {
   getArtistas( termino:string ){
 
     let headers= new Headers();
-    headers.append('authorization', 'Bearer BQDhMSIfuzxppR8vprNdOd7CN9m8bSlf6Y5f_SUVUa_xpx3FY0j7lbAYPGZ84gBUUQIxKFk0E8MO6vji_PTtig');
+    headers.append('authorization', 'Bearer BQDpjyFg7tbm9X1jbU-8a3ehKX8Xwqo45hoFIwUl7oqqPo-VGiLWVOHsmCHlOEbduqye7KNIONjNc55DgJSrdA');
     // es lo mismo
     // let query= `q=${termino}&type=artist`;
     let query= "?q="+termino+"&type=artist";
@@ -37,7 +37,7 @@ export class SpotifyService {
   getArtista( id:string ){
 
     let headers= new Headers();
-    headers.append('authorization', 'Bearer BQDhMSIfuzxppR8vprNdOd7CN9m8bSlf6Y5f_SUVUa_xpx3FY0j7lbAYPGZ84gBUUQIxKFk0E8MO6vji_PTtig');
+    headers.append('authorization', 'Bearer BQDpjyFg7tbm9X1jbU-8a3ehKX8Xwqo45hoFIwUl7oqqPo-VGiLWVOHsmCHlOEbduqye7KNIONjNc55DgJSrdA');
     // es lo mismo
     // let query= `q=${termino}&type=artist`;
     let url= this.urlArtista + id;
@@ -58,7 +58,7 @@ export class SpotifyService {
   getTopTracks( id:string ){
 
     let headers= new Headers();
-    headers.append('authorization', 'Bearer BQDhMSIfuzxppR8vprNdOd7CN9m8bSlf6Y5f_SUVUa_xpx3FY0j7lbAYPGZ84gBUUQIxKFk0E8MO6vji_PTtig');
+    headers.append('authorization', 'Bearer BQDpjyFg7tbm9X1jbU-8a3ehKX8Xwqo45hoFIwUl7oqqPo-VGiLWVOHsmCHlOEbduqye7KNIONjNc55DgJSrdA');
     // es lo mismo
     // let query= `q=${termino}&type=artist`;
     let url= this.urlArtista + id +"/top-tracks?country=US";
