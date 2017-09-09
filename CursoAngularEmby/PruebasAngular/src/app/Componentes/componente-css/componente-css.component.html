@@ -1,3 +1,8 @@
-<p>
-  componente-css works!
+<p [style.fontSize.px]="tamano">
+    componente-css works!
 </p>
+
+<button (click)="tamano=tamano+10">Aumentar letra</button>
+<button (click)="tamano=tamano-10">Reducir letra</button>
+
+<input type="text" [(ngModel)]="tamanoo" />

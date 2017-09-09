@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComponenteCssComponent implements OnInit {
 
-  constructor() { }
+  tamano=0;
+  constructor() {
+    
+   }
 
   ngOnInit() {
+    
   }
 
-  hola: string= 3;
+ 
 
 }
