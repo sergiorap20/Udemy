@@ -6,16 +6,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./componente-css.component.css']
 })
 export class ComponenteCssComponent implements OnInit {
-
-  tamano=0;
+  variable:string="Hola colega";
+  array1:string[]=["d","da","ffs"];
+  tamano='';
   constructor() {
-    
    }
 
   ngOnInit() {
-    
+    // this.crearVariable("holaaaa")
+  
   }
 
  
+
+   crearVariable(par:string){
+
+    if(par==""){
+      alert("caborn");
+    }else{
+      this.array1.push(par);
+      this.tamano='';
+    }}
+     
+  
+
+   borrarVariable(par?:string){
+    this.array1.pop();
+
+    this.tamano='';
+
+
+  }
 
 }
