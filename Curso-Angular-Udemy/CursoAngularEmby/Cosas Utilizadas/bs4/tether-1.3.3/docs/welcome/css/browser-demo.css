@@ -23,7 +23,8 @@ html, body {
   bottom: 0;
   right: 0; }
   .browser-demo *, .browser-demo *:after, .browser-demo *:before {
-    box-sizing: border-box; }
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
   .browser-demo .top {
     position: absolute;
     height: 60px;
@@ -84,3 +85,5 @@ html, body {
       width: 14px; }
     .browser-demo .word:nth-last-child(9n+1) {
       width: 80px; }
+
+/*# sourceMappingURL=browser-demo.css.map */

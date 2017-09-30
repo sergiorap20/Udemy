@@ -1,6 +1,7 @@
 @charset "UTF-8";
 *, *:after, *:before {
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 body {
   position: relative; }
@@ -64,7 +65,7 @@ output {
     color: #777;
     opacity: 1;
     -webkit-transition: opacity 0.2s;
-            transition: opacity 0.2s; }
+    transition: opacity 0.2s; }
   output.scrolled:after {
     opacity: 0; }
   output[deactivated], output[activated] {
@@ -151,13 +152,17 @@ span.attachment-mark:after, span.tether-marker-dot:after {
 .tether-element {
   position: relative; }
   .tether-element.tether-pinned-left {
-    box-shadow: inset 2px 0 0 0 red; }
+    -webkit-box-shadow: inset 2px 0 0 0 red;
+            box-shadow: inset 2px 0 0 0 red; }
   .tether-element.tether-pinned-right {
-    box-shadow: inset -2px 0 0 0 red; }
+    -webkit-box-shadow: inset -2px 0 0 0 red;
+            box-shadow: inset -2px 0 0 0 red; }
   .tether-element.tether-pinned-top {
-    box-shadow: inset 0 2px 0 0 red; }
+    -webkit-box-shadow: inset 0 2px 0 0 red;
+            box-shadow: inset 0 2px 0 0 red; }
   .tether-element.tether-pinned-bottom {
-    box-shadow: inset 0 -2px 0 0 red; }
+    -webkit-box-shadow: inset 0 -2px 0 0 red;
+            box-shadow: inset 0 -2px 0 0 red; }
 
 .tether-target {
   position: relative; }
@@ -168,7 +173,6 @@ span.attachment-mark:after, span.tether-marker-dot:after {
 [data-example^="optimizer"].lang-javascript {
   /* This should just be a `code` selector, but sass doesn't allow that with & */
   min-height: 220px; }
-
 [data-example^="optimizer"].tether-element:before {
   margin-top: 26px;
   display: block;
@@ -178,7 +182,6 @@ span.attachment-mark:after, span.tether-marker-dot:after {
   font-size: 15px;
   padding: 4px;
   color: #666; }
-
 [data-example^="optimizer"] .scroll-box .tether-element:before {
   content: "I'm in my scroll parent!"; }
 
@@ -216,3 +219,5 @@ span.attachment-mark:after, span.tether-marker-dot:after {
       display: block;
       max-width: 100%;
       width: 100px; }
+
+/*# sourceMappingURL=intro.css.map */
