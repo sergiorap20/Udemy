@@ -1,7 +1,7 @@
 import { InformacionService } from './services/informacion-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 
 // Service
@@ -25,7 +25,7 @@ import { BodyComponent } from './components/body/body.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [ DataService, InformacionService],
   bootstrap: [AppComponent]

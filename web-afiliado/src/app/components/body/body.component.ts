@@ -10,14 +10,12 @@ export class BodyComponent implements OnInit {
 
   private dataService: DataService;
 
-  constructor( _dataService: DataService) {
-    this.dataService = _dataService;
-    console.log(_dataService);
+  constructor( public _dataService: DataService) {
   }
 
-  public get_DataService() {
-    return this.dataService.objetos.products[0].offers;
-  }
+  // public get_DataService() {
+  //   return this.dataService.objetos.products[0].offers;
+  // }
 
   ngOnInit() {
   }
