@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
+// Import para que no de errores el ngModel
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Service
 import { DataService } from './services/data.service';
@@ -25,7 +27,8 @@ import { BodyComponent } from './components/body/body.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ DataService, InformacionService],
   bootstrap: [AppComponent]

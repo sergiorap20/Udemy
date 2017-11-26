@@ -1,9 +1,9 @@
 <?php 
-
-// header("Access-Control-Allow-Origin: *");
-// header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
-// header("Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token");
-// header("Content-Type: application/json");
+// A VECES DA FALLO SI SE SOLICITAN DEMASIADAS RESPUESTAS MUY RAPIDAMENTE
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token");
+header("Content-Type: application/json");
 
 $nombre_objeto=$_REQUEST["msg"];
 
@@ -13,10 +13,10 @@ require 'vendor/autoload.php';
 $client = new GuzzleHttp\Client();
 
 // Your Access Key ID, as taken from the Your Account page
-$access_key_id = "AKIAJ7RTZQQ4ZMXSVHHA";
+$access_key_id = "AKIAIUMW6FAS3CUT3PKQ";
 
 // Your Secret Key corresponding to the above ID, as taken from the Your Account page
-$secret_key = "nlyjjgdGYv6mzYOrAQ0SfMizGJU42QaQ0aAIgeHB";
+$secret_key = "BViMZKsdVdLqC/O0D7S9KaTNkJTUJMmeXLTG831M";
 
 // The region you are interested in
 $endpoint = "webservices.amazon.es";
@@ -26,7 +26,7 @@ $uri = "/onca/xml";
 $params = array(
     "Service" => "AWSECommerceService",
     "Operation" => "ItemSearch",
-    "AWSAccessKeyId" => "AKIAJ7RTZQQ4ZMXSVHHA",
+    "AWSAccessKeyId" => $access_key_id,
     "AssociateTag" => "pep2132-21",
     "SearchIndex" => "All",
     "Keywords" => $nombre_objeto,

@@ -1,13 +1,48 @@
-<section>
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-md-6 " *ngFor="let offers of get_DataService();">
+<header class="encabezado navbar-fixed-top" role="banner" id="encabezado">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.svg" alt="Logo del sitio">
+        </a>
 
-                <p class="text-center">{{offers.name}}</p>
-                <a [href]="offers.url">{{offers.url}}</a>
+        <button type="button" class="boton-buscar" data-toggle="collapse" data-target="#bloque-buscar" aria-expanded="false">
+          <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+
+        <form action="#" id="bloque-buscar" class="collapse">
+            <div class="contenedor-bloque-buscar">
+                <!-- Con el keyUP -->
+                <!-- <input type="text" placeholder="Buscar..." [(ngModel)]="buscador" name="buscar" (keyup)="get_Objetos()"> -->
+
+                <input type="text" placeholder="Buscar..." [(ngModel)]="buscador" name="buscar">
+
+                <input type="submit" value="Buscar" (click)="get_Objetos();">
+            </div>
+        </form>
+
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 " *ngFor="let items of objetos;">
+
+
+                <br>
+                <a [href]="items.DetailPageURL"><img [src]="items.MediumImage.URL" alt=""></a>
                 <hr>
+                <p><b>Categoría:</b> {{items.ItemAttributes.Binding }}</p>
+                <!-- <p><b>Color:</b> {{items.ItemAttributes.Color }}</p> -->
+                <p><b>Precio normal:</b> {{items.ItemAttributes.ListPrice.FormattedPrice }}</p>
+                <p><b>Precio actual:</b> {{items.OfferSummary.LowestNewPrice.FormattedPrice }}</p>
+                <a [href]="items.DetailPageURL" target="_blank">URL a Amazon</a>
+
+
+
+
+
 
             </div>
         </div>
-    </div> -->
+    </div>
 </section>

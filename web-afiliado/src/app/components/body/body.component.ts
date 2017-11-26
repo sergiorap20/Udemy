@@ -8,16 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 
-  private dataService: DataService;
+  // poniendo el valor {} me da un error de que el ngfor solo acepta objetos [] aunque funciona igualmente
+  private objetos:any[]= [];
+  // tslint:disable-next-line:no-inferrable-types
+  buscador:string='silla';
 
-  constructor( public _dataService: DataService) {
+  constructor( private _dataService: DataService) {
+
   }
-
-  // public get_DataService() {
-  //   return this.dataService.objetos.products[0].offers;
-  // }
+ 
 
   ngOnInit() {
+    this.get_Objetos();
   }
 
+
+  public get_Objetos(){
+    this._dataService.postNombreObjeto(this.buscador).subscribe(
+      searchProfileResponse => {
+        this.objetos=searchProfileResponse;
+        console.log(this.objetos);
+      },
+      error => {
+        console.log('error');
+      }
+    );}
+ 
+ 
+    public buscar(){
+      console.log(this.buscador);
+    }
 }
