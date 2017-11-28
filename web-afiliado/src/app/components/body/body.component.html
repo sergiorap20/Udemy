@@ -15,7 +15,7 @@
 
                 <input type="text" placeholder="Buscar..." [(ngModel)]="buscador" name="buscar">
 
-                <input type="submit" value="Buscar" (click)="get_Objetos();">
+                <input type="submit" value="Buscar" class="boton" (click)="get_Objetos();">
             </div>
         </form>
 
@@ -29,12 +29,26 @@
 
 
                 <br>
-                <a [href]="items.DetailPageURL"><img [src]="items.MediumImage.URL" alt=""></a>
+                <a [href]="items.DetailPageURL"><img [src]="items.MediumImage.URL | sinfoto: 'imagen'" alt=""></a>
                 <hr>
-                <p><b>Categoría:</b> {{items.ItemAttributes.Binding }}</p>
-                <!-- <p><b>Color:</b> {{items.ItemAttributes.Color }}</p> -->
-                <p><b>Precio normal:</b> {{items.ItemAttributes.ListPrice.FormattedPrice }}</p>
-                <p><b>Precio actual:</b> {{items.OfferSummary.LowestNewPrice.FormattedPrice }}</p>
+                <p><b>Categoría:</b> {{items.ItemAttributes.Binding | sinfoto: 'categoria' }}</p>
+                <!-- <p><b>Color:</b> {{items.ItemAttributes.Color }}</p>
+                    
+                Hago un ngIf que llama a la funcion comprobar oferta y le paso por parámetro el valor del array que dice el total de ofertas que hay de un objeto 
+                    como el ngIf ya lo controla angular no hacer falta poner {{}} en el parametro
+                -->
+                <!--Como en los que no tienen ofertas solo existe hasta items.Offers.Offer y si le meto más que esto por parámetro da error y para el programa 
+                    he tenido que hacer un pipe para el precio_normal que le pasa el value hasta items.Offers.Offer y comprueba 
+                    si el array length del value es mayor de 3 ya que en los que no tienen oferta solo es 3 , si es 3 significa que no tiene oferta
+                    y devuelvo flase , si es mayor que 3 significa que si tiene oferta y si existe el valor completo , por lo tanto devuelvo items.Offers.Offer.OfferListing.Price.FormattedPrice
+                
+                    Esto lo tengo que hacer para que al pasarle el parametro precio_normal al metodo comrpobar oferta no me de error de que a veces el parámetro no existe
+                -->
+                <p *ngIf="comprobarOferta(items.Offers.TotalOffers,items.Offers | sinfoto: 'precio_normal', items.OfferSummary.LowestNewPrice.FormattedPrice )"><b>Precio normal:</b> {{items.Offers.Offer.OfferListing.Price.FormattedPrice }}</p>
+
+                <p><b>Precio actual:</b> {{items.OfferSummary.LowestNewPrice.FormattedPrice | sinfoto: 'precio_rebajado'}}</p>
+                <!--Si no hay ofertas hago que se imprima este p -->
+                <p *ngIf="!comprobarOferta(items.Offers.TotalOffers,items.Offers | sinfoto: 'precio_normal', items.OfferSummary.LowestNewPrice.FormattedPrice)" class="text-danger">No hay ofertas para este artículo</p>
                 <a [href]="items.DetailPageURL" target="_blank">URL a Amazon</a>
 
 
