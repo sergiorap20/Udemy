@@ -10,7 +10,8 @@ export class DataService {
   cargada= false;
   objetos_post:any[]= [];
   
-  constructor(public http: HttpClient ) {
+   constructor(private http: HttpClient ) {
+  
    }
 
     public  postNombreObjeto(search:string){

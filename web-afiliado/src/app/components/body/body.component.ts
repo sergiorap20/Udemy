@@ -1,6 +1,7 @@
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -13,6 +14,7 @@ export class BodyComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   buscador:string='silla';
   ofertas=false;
+
   constructor( private _dataService: DataService) {
 
   }
@@ -48,5 +50,17 @@ export class BodyComponent implements OnInit {
       }
     }
 
+    // El parametro que recibe esta funcion es el id de la ul a la que cambiare la clase segun
+    // si su clase es d-block o d-none
+    public mostrarOcultar(value){
 
-    }
+      if(document.getElementById(value).className=='d-none'){
+        // para añadirle una clase mas seria document.getElementById(value).className += 'd-block';
+        // en este caso necesito usar el = no el  +=
+        document.getElementById(value).className = 'd-block';
+      }else{
+        document.getElementById(value).className = 'd-none';
+      }
+    
+   }
+}

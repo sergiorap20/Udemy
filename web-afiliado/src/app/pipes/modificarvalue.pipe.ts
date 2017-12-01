@@ -1,19 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sinfoto'
+  name: 'modificarValue'
 })
-export class SinfotoPipe implements PipeTransform {
+export class ModificarValuePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     
     if(args=='imagen'){
-        if(value ==''){
-          return 'assets/images/noimage.png';
-        }else if(!value){
-          return 'assets/images/noimage.png';
+      // compruebo si imageset es un array , viendo si su posicion 0 es null
+      // si no es un array devuelvo el valor en forma de no array
+        if(value.ImageSet[0] == null){
+          return value.ImageSet.MediumImage.URL;
         }else{
-          return value;
+      // si es un array devuelvo el valor en forma de array
+          
+          return value.ImageSet[0].MediumImage.URL;
         }
       }
     
@@ -47,12 +49,13 @@ export class SinfotoPipe implements PipeTransform {
 
 
 if(args=='precio_rebajado'){
-  if(value ==''){
-    return 'En amazon este artículo no tiene precio_rebajado';
-  }else if(!value){
-    return 'En amazon este artículo no tiene precio_rebajado';
+  
+  if(value.LowestNewPrice.FormattedPrice ==null){
+
+    return value.LowestUsedPrice.FormattedPrice;
+    
   }else{
-    return value;
+    return value.LowestNewPrice.FormattedPrice;
   }
 }
 

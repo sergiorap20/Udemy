@@ -25,13 +25,14 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-3 " *ngFor="let items of objetos;">
+            <div class="col-md-3 item" *ngFor="let items of objetos;let i = index;">
 
 
                 <br>
-                <a [href]="items.DetailPageURL"><img [src]="items.MediumImage.URL | sinfoto: 'imagen'" alt=""></a>
+                <a [href]="items.DetailPageURL"><img [src]="items.ImageSets | modificarValue: 'imagen'" alt=""></a>
                 <hr>
-                <p><b>Categoría:</b> {{items.ItemAttributes.Binding | sinfoto: 'categoria' }}</p>
+                <p style="font-style:italic;">{{items.ItemAttributes.Title}}</p>
+                <p><b>Categoría:</b> {{items.ItemAttributes.ProductGroup | modificarValue: 'categoria' }}</p>
                 <!-- <p><b>Color:</b> {{items.ItemAttributes.Color }}</p>
                     
                 Hago un ngIf que llama a la funcion comprobar oferta y le paso por parámetro el valor del array que dice el total de ofertas que hay de un objeto 
@@ -44,14 +45,28 @@
                 
                     Esto lo tengo que hacer para que al pasarle el parametro precio_normal al metodo comrpobar oferta no me de error de que a veces el parámetro no existe
                 -->
-                <p *ngIf="comprobarOferta(items.Offers.TotalOffers,items.Offers | sinfoto: 'precio_normal', items.OfferSummary.LowestNewPrice.FormattedPrice )"><b>Precio normal:</b> {{items.Offers.Offer.OfferListing.Price.FormattedPrice }}</p>
+                <p *ngIf="comprobarOferta(items.Offers.TotalOffers, items.Offers | modificarValue: 'precio_normal', items.OfferSummary )">
+                    <b>Precio normal:</b> {{items.Offers.Offer.OfferListing.Price.FormattedPrice }}</p>
 
-                <p><b>Precio actual:</b> {{items.OfferSummary.LowestNewPrice.FormattedPrice | sinfoto: 'precio_rebajado'}}</p>
+                <p><b>Precio actual:</b> {{items.OfferSummary | modificarValue: 'precio_rebajado'}}</p>
                 <!--Si no hay ofertas hago que se imprima este p -->
-                <p *ngIf="!comprobarOferta(items.Offers.TotalOffers,items.Offers | sinfoto: 'precio_normal', items.OfferSummary.LowestNewPrice.FormattedPrice)" class="text-danger">No hay ofertas para este artículo</p>
-                <a [href]="items.DetailPageURL" target="_blank">URL a Amazon</a>
-
-
+                <p *ngIf="!comprobarOferta(items.Offers.TotalOffers,items.Offers | modificarValue: 'precio_normal', items.OfferSummary)" class="text-danger">No hay ofertas para este artículo</p>
+                <a [href]="items.DetailPageURL" target="_blank" class="d-block">URL a Amazon</a>
+                <!--Creo un boton que llama a una funcion mostrarOcultar y le paso por parametro la variable
+                    i+1 declarada en el ngfor , por lo tanto el parametro será igual al id de la ul
+                    que creo despues -->
+                <button class="boton-mostrar" (click)="mostrarOcultar(i+1);"> Caracteristicas</button>
+                <!--Le añado un array al ul que será la variable i que declaro en el ngfor +1 
+                    la variable i sera cada vez que se recorre el for un numero mas alto  -->
+                <div [id]="i+1" class="d-none">
+                    <ul class="caracteristicas">
+                        <!-- Muestro los tods datos de un array dentro del array de items-->
+                        <!-- Hago un pipe que comprueba si el dato es un array o un string y transforma el string en array ya que el ngfor da error si no es array-->
+                        <li *ngFor="let caracteristica of items.ItemAttributes.Feature | convertirArray">
+                            {{caracteristica}}
+                        </li>
+                    </ul>
+                </div>
 
 
 

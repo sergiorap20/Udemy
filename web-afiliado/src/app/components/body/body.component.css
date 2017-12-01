@@ -2,6 +2,10 @@ a {
     font-size: 12px;
 }
 
+hr {
+    background-color: #12AFAF;
+}
+
 .encabezado {
     background: #111111;
     color: #fff;
@@ -97,6 +101,8 @@ a {
     flex: 1 1 auto;
     border: 0;
     border-radius: 0 5px 5px 0;
+    /* background: #12AFAF;
+     */
     background: #12AFAF;
     color: #fff;
     -webkit-box-flex: 0;
@@ -104,4 +110,27 @@ a {
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     padding: 0 1rem;
+    font-weight: bold;
+    cursor: pointer;
 }
+
+.caracteristicas {
+    padding-left: 0px!important;
+}
+
+.caracteristicas li {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+
+.boton-mostrar {
+    border-radius: 10px;
+    border: 0px;
+    background-color: #12AFAF;
+    color: rgb(230, 230, 230);
+    font-size: 0.7rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.item {}
