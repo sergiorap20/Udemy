@@ -9,7 +9,7 @@ export class SearchComponent implements OnInit {
 
   busqueda:string="";
 
-  constructor(private _spotifyService:SpotifyService) { }
+  constructor(public _spotifyService:SpotifyService) { }
 
   ngOnInit() {
     
