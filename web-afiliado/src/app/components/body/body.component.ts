@@ -13,7 +13,8 @@ export class BodyComponent implements OnInit {
   public objetos:any[]= [];
   // tslint:disable-next-line:no-inferrable-types
   buscador:string='silla';
-  ofertas=false;
+  // ofertas=false;
+  only_offerts=false;
 
   constructor( private _dataService: DataService) {
 
@@ -41,14 +42,15 @@ export class BodyComponent implements OnInit {
     // es mayor o menor que 0 este array siempre es mayor que 0 si hay alguna oferta
     // , en algunos los datos de amazon están mal y aunque digan que si hay oferta, el precio inicial es
     // = al precio rebajado , por lo tanto solo devuelvo true si también el precio normal es diferente del rebajado
-    public comprobarOferta(oferta,precio_normal?,precio_rebajado?):boolean{
-     
-      if(oferta>0 && precio_normal != precio_rebajado){
-        return true;
-      }else{
-        return false;
+    public comprobarOferta(oferta,precio_normal?,precio_rebajado?,precio_segunda_mano?):boolean{
+      // no puedo hacer un precio_normal > precio_rebajado , ya que los datos de amazon no son numeros solo
+      // porque viene EUR delante asi que no se pueden comparar mayor y menor
+        if(precio_normal != precio_rebajado && precio_rebajado != 0){
+          return true;
+        }else{
+          return false;
+        }
       }
-    }
 
     // El parametro que recibe esta funcion es el id de la ul a la que cambiare la clase segun
     // si su clase es d-block o d-none

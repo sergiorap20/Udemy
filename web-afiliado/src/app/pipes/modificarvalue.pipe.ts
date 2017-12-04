@@ -8,16 +8,66 @@ export class ModificarValuePipe implements PipeTransform {
   transform(value: any, args?: any): any {
     
     if(args=='imagen'){
-      // compruebo si imageset es un array , viendo si su posicion 0 es null
-      // si no es un array devuelvo el valor en forma de no array
-        if(value.ImageSet[0] == null){
-          return value.ImageSet.MediumImage.URL;
-        }else{
-      // si es un array devuelvo el valor en forma de array
-          
-          return value.ImageSet[0].MediumImage.URL;
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }else if(value.ImageSets.ImageSet[0]==null){
+          return value.ImageSets.ImageSet.MediumImage.URL;
+        }
+        else{
+          return value.ImageSets.ImageSet[0].MediumImage.URL;
         }
       }
+
+      // IMAGENES CAROUSEL
+
+      if(args=='imagen-carousel1'){
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }else if(value.ImageSets.ImageSet[0]==null){
+          return value.ImageSets.ImageSet.LargeImage.URL;
+        }
+        else{
+          return value.ImageSets.ImageSet[0].LargeImage.URL;
+        }
+      }
+
+      if(args=='imagen-carousel2'){
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }
+        else if(value.ImageSets.ImageSet[1]==null){
+          return 'assets/images/noimage.png';
+        }
+        else{
+          return value.ImageSets.ImageSet[1].LargeImage.URL;
+        }
+      }
+
+      if(args=='imagen-carousel3'){
+        if(value.ImageSets == null){
+
+          return 'assets/images/noimage.png';
+        }
+        else if(value.ImageSets.ImageSet[2]==null){
+          return 'assets/images/noimage.png';
+        }
+        else{
+          return value.ImageSets.ImageSet[2].LargeImage.URL;
+        }
+      }
+
+      if(args=='imagen-carousel4'){
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }
+        else if(value.ImageSets.ImageSet[3]==null){
+          return 'assets/images/noimage.png';
+        }
+        else{
+          return value.ImageSets.ImageSet[3].LargeImage.URL;
+        }
+      }
+    
     
 
     if(args=='categoria'){
@@ -29,19 +79,27 @@ export class ModificarValuePipe implements PipeTransform {
         return value;
       }
     }
-  
+    
+    // comprueba si el objeto tiene el campo Offers o no lo tiene, si no lo tiene devuelve el campo 0
+    // ya que este valor que devuelve se lo paso por parametro a la funcion del componente de comprbar oferta
+    // hace que si el parametro es mayor que 0 devuelve true
+    if(args=='ofertas'){
+      if(value.Offers == null){
+        return '0';
+      }else{
+        return value.Offers.TotalOffers;
+      }
+    }
 
   // Esto lo hago para poder saber si existe o no el precio normal, ya que en los arrays devueltos que no 
   // tienen ofertas no existe , entonces al pasarle este valor por parametro a la funcion que comrpueba si
   // hay oferta, para comprarar el precio inicial y el final , en los arrays que el parametro no existe da error
   // y para el programa
   if(args=='precio_normal'){
-    // El object.keys().lenght es como un array length pero de objetos
-    let cantidad_objetos= Object.keys(value).length;
-    if(cantidad_objetos==3){
-      return false;
+    if(value.ListPrice==null){
+      return 'Este artículo no tiene precio fijo en amazon';
     }else{
-      return value.Offer.OfferListing.Price.FormattedPrice;
+      return value.ListPrice.FormattedPrice;
     }
     
   }
@@ -50,14 +108,84 @@ export class ModificarValuePipe implements PipeTransform {
 
 if(args=='precio_rebajado'){
   
-  if(value.LowestNewPrice.FormattedPrice ==null){
+  if(value.OfferSummary ==null){
 
-    return value.LowestUsedPrice.FormattedPrice;
+    return '0';
     
-  }else{
-    return value.LowestNewPrice.FormattedPrice;
+  }
+ if (value.OfferSummary.LowestNewPrice!=null ){
+    
+    return value.OfferSummary.LowestNewPrice.FormattedPrice;
+        
+        
+  }
+   if (value.OfferSummary.LowestNewPrice==null && value.OfferSummary.LowestCollectiblePrice!=null){
+    
+    return value.OfferSummary.LowestCollectiblePrice.FormattedPrice;
+        
+  }
+   if (value.OfferSummary.LowestNewPrice==null && value.OfferSummary.LowestCollectiblePrice==null){
+    
+    return '0';
+        
+  }
+  
+}
+
+if(args=='precio_rebajado_segundaMano'){
+  
+  if(value.OfferSummary ==null){
+
+    return 'No hay de segunda mano';
+    
+  }else if (value.OfferSummary.LowestUsedPrice!=null){
+
+    return value.OfferSummary.LowestUsedPrice.FormattedPrice;
+    
+  }
+  else{
+    return 'No hay de segunda mano';
   }
 }
 
 
+if(args=='precio_normal_amount'){
+  if(value.ListPrice==null){
+    return 'Este artículo no tiene precio fijo en amazon';
+  }else{
+    return value.ListPrice.Amount;
+  }
+  
+}
+
+
+
+if(args=='precio_rebajado_amount'){
+
+if(value.OfferSummary ==null){
+
+  return '0';
+  
+}
+if (value.OfferSummary.LowestNewPrice!=null ){
+  
+  return value.OfferSummary.LowestNewPrice.Amount;
+      
+      
+}
+ if (value.OfferSummary.LowestNewPrice==null && value.OfferSummary.LowestCollectiblePrice!=null){
+  
+  return value.OfferSummary.LowestCollectiblePrice.Amount;
+      
+}
+ if (value.OfferSummary.LowestNewPrice==null && value.OfferSummary.LowestCollectiblePrice==null){
+  
+  return '0';
+      
+}
+
+}
+
 }}
+
+

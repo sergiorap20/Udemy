@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
 import { ConvertirArrayPipe } from './pipes/convertir-array.pipe';
 import { ModificarValuePipe } from './pipes/modificarvalue.pipe';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 
@@ -28,7 +29,8 @@ import { ModificarValuePipe } from './pipes/modificarvalue.pipe';
     FooterComponent,
     BodyComponent,
     ModificarValuePipe,
-    ConvertirArrayPipe
+    ConvertirArrayPipe,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

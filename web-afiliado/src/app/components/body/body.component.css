@@ -123,14 +123,41 @@ hr {
     margin-top: 1rem;
 }
 
-.boton-mostrar {
+.boton-caracteristicas {
     border-radius: 10px;
     border: 0px;
-    background-color: #12AFAF;
-    color: rgb(230, 230, 230);
+    background-color: rgba(15, 141, 141, 0);
+    color: rgb(59, 59, 59);
     font-size: 0.7rem;
     cursor: pointer;
+    padding-left: 0px;
     font-weight: bold;
 }
 
 .item {}
+
+
+/* CAROUSEL popup */
+
+.carousel-indicators li {
+    background-color: rgb(173, 170, 170);
+}
+
+.carousel-indicators .active {
+    background-color: rgb(41, 41, 41);
+}
+
+span i {
+    color: black;
+    font-size: 3rem;
+}
+
+.carousel-item img {
+    height: 500px;
+}
+
+.boton-carousel {
+    font-size: 12px;
+    width: 5rem;
+    margin: 1.3rem 0px;
+}
