@@ -86,6 +86,11 @@ hr {
     animation-name: fadeIn;
 }
 
+.pagina-activa {
+    border-bottom: 1px solid white;
+    transition: all .9s ease
+}
+
 
 /*Hago que si el dispositivo tiene menos de 600px la clase img-pe tenga la propiedad 100%*/
 
