@@ -88,7 +88,8 @@ hr {
 
 .pagina-activa {
     border-bottom: 1px solid white;
-    transition: all .9s ease
+    transition: all .9s ease;
+    color: white!important;
 }
 
 
