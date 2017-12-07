@@ -18,6 +18,7 @@ import { BodyComponent } from './components/body/body.component';
 import { ConvertirArrayPipe } from './pipes/convertir-array.pipe';
 import { ModificarValuePipe } from './pipes/modificarvalue.pipe';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 
 
@@ -30,7 +31,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     BodyComponent,
     ModificarValuePipe,
     ConvertirArrayPipe,
-    CarouselComponent
+    CarouselComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

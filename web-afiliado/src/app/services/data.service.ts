@@ -19,7 +19,7 @@ export class DataService {
       let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
       const parametros_post = 'msg='+search;
 
-      return this.http.post('http://localhost/prueba-amazonPHP/amazon.php', parametros_post , {headers : headers})
+      return this.http.post('http://pruebasscc.x10host.com/php/ama.php', parametros_post , {headers : headers})
       // el :any lo uso par decirle que puede ser de cualquier tipo y qe no me de error al poner el.items.item
       .map((response:any) => {
         this.objetos_post=response.Items.Item;

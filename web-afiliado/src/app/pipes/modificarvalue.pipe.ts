@@ -11,10 +11,15 @@ export class ModificarValuePipe implements PipeTransform {
         if(value.ImageSets == null){
           return 'assets/images/noimage.png';
         }else if(value.ImageSets.ImageSet[0]==null){
-          return value.ImageSets.ImageSet.MediumImage.URL;
+          // EL MEDIUM IMAGE SI LUEGO PONGO EL HEIGHT MAYOR QUE SU HEIGHT PIERDE CALIDAD Y SE VE BORROSA
+          return value.ImageSets.ImageSet.LargeImage.URL;
+          // return value.ImageSets.ImageSet.MediumImage.URL;
+          
         }
         else{
-          return value.ImageSets.ImageSet[0].MediumImage.URL;
+          return value.ImageSets.ImageSet[0].LargeImage.URL;
+          // return value.ImageSets.ImageSet[0].MediumImage.URL;
+          
         }
       }
 
@@ -69,6 +74,55 @@ export class ModificarValuePipe implements PipeTransform {
       }
     
     
+      // IMAGENES CAROUSEL
+
+      if(args=='imagen-carousel2-1'){
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }else if(value.ImageSets.ImageSet[0]==null){
+          return value.ImageSets.ImageSet.LargeImage.URL;
+        }
+        else{
+          return value.ImageSets.ImageSet[0].LargeImage.URL;
+        }
+      }
+
+      if(args=='imagen-carousel2-2'){
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }
+        else if(value.ImageSets.ImageSet[1]==null){
+          return 'assets/images/noimage.png';
+        }
+        else{
+          return value.ImageSets.ImageSet[1].LargeImage.URL;
+        }
+      }
+
+      if(args=='imagen-carousel2-3'){
+        if(value.ImageSets == null){
+
+          return 'assets/images/noimage.png';
+        }
+        else if(value.ImageSets.ImageSet[2]==null){
+          return 'assets/images/noimage.png';
+        }
+        else{
+          return value.ImageSets.ImageSet[2].LargeImage.URL;
+        }
+      }
+
+      if(args=='imagen-carousel2-4'){
+        if(value.ImageSets == null){
+          return 'assets/images/noimage.png';
+        }
+        else if(value.ImageSets.ImageSet[3]==null){
+          return 'assets/images/noimage.png';
+        }
+        else{
+          return value.ImageSets.ImageSet[3].LargeImage.URL;
+        }
+      }
 
     if(args=='categoria'){
       if(value ==''){

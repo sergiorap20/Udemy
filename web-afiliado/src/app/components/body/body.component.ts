@@ -38,10 +38,6 @@ export class BodyComponent implements OnInit {
     );}
  
 
-    // Compruebo si el parametro que recibo , que es el del array que dice si tiene ofertas
-    // es mayor o menor que 0 este array siempre es mayor que 0 si hay alguna oferta
-    // , en algunos los datos de amazon están mal y aunque digan que si hay oferta, el precio inicial es
-    // = al precio rebajado , por lo tanto solo devuelvo true si también el precio normal es diferente del rebajado
     public comprobarOferta(oferta,precio_normal?,precio_rebajado?,precio_segunda_mano?):boolean{
       // no puedo hacer un precio_normal > precio_rebajado , ya que los datos de amazon no son numeros solo
       // porque viene EUR delante asi que no se pueden comparar mayor y menor

@@ -4,7 +4,14 @@
 <head>
     <meta charset="utf-8">
     <title>WebAfiliado</title>
-    <base href="/">
+
+    <!--Pongo este escript en vez del base href / que viene de inicio 
+        ya que si no al subirlo en un host da error y no encuentra los archivos
+        una vez tiene la carpeta dist creada -->
+    <script>
+        document.write('<base href="' + document.location + '" />');
+    </script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
