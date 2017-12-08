@@ -18,6 +18,8 @@ import { BodyComponent } from './components/body/body.component';
 import { ConvertirArrayPipe } from './pipes/convertir-array.pipe';
 import { ModificarValuePipe } from './pipes/modificarvalue.pipe';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { APP_ROUTING } from './app.routes';
 
 
 
@@ -30,12 +32,14 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     BodyComponent,
     ModificarValuePipe,
     ConvertirArrayPipe,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, 
+    APP_ROUTING
   ],
   providers: [ DataService, InformacionService],
   bootstrap: [AppComponent]
