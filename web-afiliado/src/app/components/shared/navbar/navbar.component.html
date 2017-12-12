@@ -34,7 +34,7 @@
 
     </div> -->
 
-    <nav class="navbar navbar-expand-lg navbar-light barra-nav">
+    <nav class="navbar navbar-expand-lg navbar-light barra-nav justify-content-end">
 
         <a class="navbar-brand" href="#">
             <img src="assets/img/banner-ico.png" width="30" height="30" alt="">
@@ -46,7 +46,7 @@
 
         <!-- Just an image -->
 
-
+        <app-login></app-login>
         <div class="collapse navbar-collapse ml-0 ml-md-5" id="navbarSupportedContent">
             <ul class="navbar-nav m-0 mr-5 pr-3 w-100 d-flex justify-content-end">
                 <!-- El routerLinkActive añade esa clase cuando esa pagina del router esta activa -->
@@ -67,45 +67,4 @@
     </nav>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <small id="emailHelp" class="form-text text-muted">Una vez logueado en la aplicación podrá seleccionar los productos de amazon que desee para que le llegue una notificación cuando tengan alguna oferta menor que el precio actual.</small>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                </div>
-                <div class="modal-body">
-
-                    <form class=" d-flex flex-column flex-wrap align-items-center" method="post" action="http://localhost/prueba-modalLogin/prueba-form-angular.php">
-                        <div class="form-group mt-2">
-                            <label for="email">Introduzca su email </label>
-
-                            <input type="email" class="form-control w-100" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" required>
-                        </div>
-                        <div class="form-group mt-2">
-                            <label for="password">Introduzca su contraseña </label>
-
-                            <input type="password" class="form-control w-100" name="password" id="password" placeholder="Contraseña" required>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label" style="font-weight:400!important;">
-                                  <input type="checkbox" class="form-check-input">
-                                  Recordarme
-                                </label>
-                        </div>
-                        <div class="text-center mt-4">
-                            <input type="submit" class="btn btn-primary w-50" value="Entrar" />
-
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-        </div>
-    </div>
 </header>

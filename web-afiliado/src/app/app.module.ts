@@ -1,4 +1,3 @@
-import { InformacionService } from './services/informacion-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Service
 import { DataService } from './services/data.service';
+import { LoginService } from './services/login.service';
+
 
 
 import { AppComponent } from './app.component';
@@ -39,9 +40,10 @@ import { APP_ROUTING } from './app.routes';
     BrowserModule,
     HttpClientModule,
     FormsModule, 
+    ReactiveFormsModule,
     APP_ROUTING
   ],
-  providers: [ DataService, InformacionService],
+  providers: [ DataService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
