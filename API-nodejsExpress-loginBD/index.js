@@ -10,8 +10,7 @@
 
 // importo express en una variable
 const express = require("express");
-// importo el modelo product que he creado en models
-const Product = require("./models/product");
+
 // importo bodyParser que es una libreria que se usa en express
 // paracontrolar mejor las peticiones http,etc se tiene que instalar
 // a parte con npm
@@ -29,6 +28,17 @@ const port = process.env.PORT || 3000;
 conectarDB();
 iniciarServidor();
 
+
+// los  delete  y get se tienen que pasar por url los parametros no por el body como con el post en nodejs al haberle puesto /api/product/:productId 
+// para hacerlo la url seria localhost:3000/api/product/idquesea
+
+// los  delete  y get se tienen que pasar por url los parametros no por el body como con el post al haberle puesto /api/product/:productId 
+// para hacerlo la url seria localhost:3000/api/product/idquesea
+
+// los  delete  y get se tienen que pasar por url los parametros no por el body como con el post al haberle puesto /api/product/:productId 
+// para hacerlo la url seria localhost:3000/api/product/idquesea
+
+
 //  -----EJEMPLOO------
 // Añado a que urls queremos que este servidor escuche, necesitamos esto para indicar en que url entramos para que nos de esa respuesta
 // por ejemplo aqui si entramos en ----localhost:3000/hola--- recibiremos un json mensaje : hola mas el parametro
@@ -39,52 +49,29 @@ iniciarServidor();
 //         resp.send({ mensaje: `Hola ${requ.params.parametro}` })
 //     })
 
-// El get lo utilizo para devolver datos, el 200 es el codigo de todo correcto que envio con la respuesta
-app.get("/api/product", (req, res) => {
-    res.status(200).body({ products: [] });
-});
+// importo el controlador donde tengo todas las funciones
+const product_controller = require("./controllers/product.js")
 
-app.get("/api/product/:productId", (req, res) => {});
+// El get lo utilizo para devolver datos, con la siguiente funcion devolvere todos los productos que hay en la bd
+// devuelve directamente todos los productos porque creo que al haber exportado el model products con mongoose,
+// al hacer el find sin pasarle parametros devuelve todos y como arriba he creado la variable Product que es un mongoose model Product
+// directamente devuelve de la bd todo lo que coincide con este modelo
 
-// El post lo utilizo cuando paso parametros importantes desde el cliente y que iran en el cuerpo de la peticion
-// para acceder a estos datos utilizo el req.body, que es del bodyparser que he instalado al principio
-// poniendo el console.log(req.body) si hago una peticion con postman, el cliente recibe el producto se ha recibido
-// y aqui enel servidor veré los parámetros que le he pasado con la petición del cliente
-// EJEMPLO
-// app.post('/api/product', (req, res) => {
-//     console.log(req.body)
-//     res.status(200).send({ message: 'El producto se ha recibido' })
-// })
+// NO LE TENGO QUE PASAR PARAMETROS A LAS FUNCIONES DEL CONTROLLER AUNQUE LO PIDAN YA QUE SE LLAMAN COMO UN CALLBACK
+// DIRECTAMENTE CON LSO METODOS GET POST... ES DECIR AL EJECUTARSE YA ES COMO SI SE SUSTITUYERAN POR EL NOMBRE DE LA FUNCION
+// CON LOS PARAMETROS CORRESPONDIENTES QUE SON LOS QUE LLEGAN CUANDO SE EJECUTA YA QUE HASTA QUE NO SE EJECUTA EL GET
+// O LAS DEMAS PETICIONES LOS PARAMETROS QUE PIDEN LAS FUNCIONES CALLBACK NO EXISTEN
+app.get("/api/products", product_controller.getProducts);
 
-app.post("/api/product", (req, res) => {
-    // el product es el modelo que he creado y obligará
-    // a tener el formato que le he dado en el model
-    // es parecido a una interfaz de java
-    let product = new Product();
-    // relleno cada campo el product con los parametros
-    // que me vienen en el body de la peticion post
-    product.name = req.body.name;
-    product.picture = req.body.picture;
-    product.price = req.body.price;
-    // el category tiene qeu ser uno de los 3 valores
-    // que le he dado en el model, si no no funcionará
-    product.category = req.body.category;
-    product.description = req.body.description;
+// Aqui devuelvo solo el producto que coincida con el id del parametro que le paso
+app.get("/api/product/:productId", product_controller.getProduct);
 
-    // es la funcion para guardar el producto en la bd
-    product.save((err, productoGuardado) => {
-        // como elif es de una linea lo puedo hacer asi
-        if (err)
-            res.status(500).send({ message: `Error al guardar los datos: ${err}` });
+app.post("/api/product", product_controller.saveProduct);
 
-        // esto de abajo es el else pero al ser de una linea no hace falta poner el else
-        res.status(200).send({ product: productoGuardado });
-    })
-})
+app.put('/api/product/:productId', product_controller.updateProduct);
 
-app.put('/api/product/:productId', (req, res) => {});
-
-app.delete('/api/product/:productId', (req, res) => {});
+// los json delete  put y get se tienen que pasar por url los parametros no por el body como con el post
+app.delete('/api/product/:productId', product_controller.deleteProduct);
 
 function conectarDB() {
     // CONEXION A LA BD CON MONGOOSE pongo_promise porque es una promesa
@@ -100,13 +87,6 @@ function conectarDB() {
     //Bind connection to error event (to get notification of connection errors)
     db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-    // mongoose.connect('mongodb://localhost:27017/shop', (err, res) => {
-    //     if (err) { throw err } else {
-    //         console.log('Conexion a la base de datos establecida')
-    //     }
-    //     //como son solo 2 lineas este if else seria equivalente a
-    //     // if(err) throw err
-    //     // console.log('Conexion a la base de datos establecida')
 }
 
 function iniciarServidor() {
