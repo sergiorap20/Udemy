@@ -15,6 +15,8 @@ export class RegistroComponent implements OnInit {
 // se ha creado el usuario
   usuario_registrado=false;
 
+  pass_coindicen=true;
+
   constructor(private _registroService:RegistroService) { }
 
   ngOnInit() {
@@ -78,5 +80,19 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  public comprobarPass(){
+    let password:any = this.formulario_registro.controls['password'];
+    let repetir_password:any = this.formulario_registro.controls['repetir_password'];
+
+    if(password.value === repetir_password.value){
+
+    this.pass_coindicen=true;
+
+  }else{
+
+    this.pass_coindicen=false;
+    
+  }
+  }
 
 }

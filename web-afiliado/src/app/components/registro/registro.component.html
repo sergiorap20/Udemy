@@ -44,12 +44,16 @@
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="repetir_password" [ngClass]="{'text-danger': formulario_registro.controls['repetir_password'].touched && !formulario_registro.controls['repetir_password'].valid}">Introduzca su contraseña </label>
+                        <label for="repetir_password" [ngClass]="{'text-danger': formulario_registro.controls['repetir_password'].touched && !formulario_registro.controls['repetir_password'].valid}">Repetir contraseña </label>
 
-                        <input type="password" class="form-control w-100" name="repetir_password" placeholder="Introduzca su contraseña" formControlName="repetir_password" [ngClass]="{'invalido': formulario_registro.controls['repetir_password'].touched && !formulario_registro.controls['repetir_password'].valid}">
+                        <input type="password" class="form-control w-100" name="repetir_password" placeholder="Repetir contraseña" formControlName="repetir_password" (keyup)="comprobarPass()" [ngClass]="{'invalido': formulario_registro.controls['repetir_password'].touched && !formulario_registro.controls['repetir_password'].valid}">
                         <div *ngIf="formulario_registro.controls['repetir_password'].touched && formulario_registro.controls['repetir_password'].errors?.required" class="text-danger">
                             Este campo no puede estar vacío
                         </div>
+                    </div>
+
+                    <div *ngIf="!pass_coindicen" class="text-danger">
+                        Las contraseñas no coinciden
                     </div>
 
                     <div class="form-check">
