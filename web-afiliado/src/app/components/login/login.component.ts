@@ -12,7 +12,10 @@ export class LoginComponent implements OnInit {
 
   // creo la variable donde guardare el formulario
   formulario_login:FormGroup;
+
+  respuesta_login:string;
   
+  respuesta_comprobarUsuario:string;
 
   constructor(private _loginService:LoginService) { }
 
@@ -43,15 +46,38 @@ export class LoginComponent implements OnInit {
       this._loginService.loguearse(email,password).subscribe(
         response=>{
           console.log(response);
+          this.respuesta_login=response.message;
         },
         error=>{
-          console.log(error);
+       this.respuesta_login=error.error.message;
         }
       );
 
     }
     else{
       console.log('No intentes poner el botón de loguearse en enabled sin los formatos correctos en el input');
+    }
+  }
+
+  public comprobarUsuario(){
+    // creo variables con los valores de los input
+     let email= this.formulario_login.controls['email'].value;
+
+    // compruebo que el email es valido por si acaso alguien activa el enable del boton por el f12
+    if(this.formulario_login.controls['email'].valid ){
+
+      this._loginService.comprobarUsuario(email).subscribe(
+        response=>{
+          console.log(response);
+          this.respuesta_comprobarUsuario='';
+        },
+        error=>{
+          this.respuesta_comprobarUsuario=error.error.message;
+        }
+      );
+
+    }
+    else{
     }
   }
   

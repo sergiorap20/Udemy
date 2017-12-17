@@ -21,4 +21,7 @@ router.post('/signup', userCtrl.signUp)
 
 router.post('/signin', userCtrl.signIn)
 
+router.post('/comprobarUsuario', userCtrl.comprobarUsuario)
+
+
 module.exports = router

@@ -1,3 +1,4 @@
+import { RegistroService } from './services/registro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,13 +15,13 @@ import { LoginService } from './services/login.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
 import { ConvertirArrayPipe } from './pipes/convertir-array.pipe';
 import { ModificarValuePipe } from './pipes/modificarvalue.pipe';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { APP_ROUTING } from './app.routes';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 
@@ -29,12 +30,12 @@ import { APP_ROUTING } from './app.routes';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     BodyComponent,
     ModificarValuePipe,
     ConvertirArrayPipe,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,7 @@ import { APP_ROUTING } from './app.routes';
     ReactiveFormsModule,
     APP_ROUTING
   ],
-  providers: [ DataService,LoginService],
+  providers: [ DataService,LoginService , RegistroService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

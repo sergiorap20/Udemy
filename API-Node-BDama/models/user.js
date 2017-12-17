@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt-nodejs')
 
 const UserSchema = ({
     email: { type: String, unique: true, required: true, lowercase: true },
-    user: { type: String, unique: true, required: true },
     // select false , hace que al hacer un get con un select no pase el password
     password: { type: String, select: false, required: true },
     signupDate: { type: Date, default: Date.now(), required: true },

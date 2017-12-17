@@ -47,19 +47,21 @@
         <!-- Just an image -->
 
         <app-login></app-login>
+        <app-registro></app-registro>
         <div class="collapse navbar-collapse ml-0 ml-md-5" id="navbarSupportedContent">
             <ul class="navbar-nav m-0 mr-5 pr-3 w-100 d-flex justify-content-end">
                 <!-- El routerLinkActive añade esa clase cuando esa pagina del router esta activa -->
 
                 <li class="nav-item pl-0 pl-md-3">
-                    <a class="nav-link" [routerLink]="['home']" routerLinkActive="pagina-activa">Home </a>
+                    <a class="nav-link" [routerLink]="['home']" routerLinkActive="pagina-activa">Buscar </a>
                 </li>
                 <li class="nav-item pl-0 pl-md-3">
-                    <a class="nav-link" [routerLink]="['login']" routerLinkActive="pagina-activa">Login</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal2" style="cursor:pointer;">Registrarse</a>
                 </li>
                 <li class="nav-item pl-0 pl-md-3">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer;">Login Modal</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer;">Login</a>
                 </li>
+
 
             </ul>
 
